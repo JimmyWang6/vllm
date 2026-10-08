@@ -3,7 +3,9 @@
 
 setuptools==78.1.1 # this version can reuse CMake build dir; >=78.1.1 for GHSA-5rjg-fvgr-3xxf
 
-numba == 0.65.0 # Required for N-gram speculative decoding
+# Keep the versions used by the s390x source build and ppc64le wheel provider.
+numba == 0.65.0; platform_machine == "s390x" or platform_machine == "ppc64le"
+numba == 0.68.0; platform_machine != "s390x" and platform_machine != "ppc64le" # Required for N-gram speculative decoding
 
 # Dependencies for CPUs
 torch==2.13.0+cpu; platform_machine == "x86_64" or platform_machine == "s390x" or platform_machine == "aarch64"
